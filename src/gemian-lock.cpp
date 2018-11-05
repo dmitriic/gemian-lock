@@ -307,6 +307,9 @@ static void input_done() {
         clear_password_memory();
 
         ev_break(EV_DEFAULT, EVBREAK_ALL);
+		
+		system("/home/dark/tools/unlocked.sh");
+		
         return;
     }
 #else
@@ -322,6 +325,9 @@ static void input_done() {
         pam_end(pam_handle, PAM_SUCCESS);
 
         ev_break(EV_DEFAULT, EVBREAK_ALL);
+		
+		system("/home/dark/tools/unlocked.sh");
+		
         return;
     }
 #endif
@@ -467,7 +473,7 @@ static void handle_key_press(xcb_key_press_event_t *event) {
 
     switch (ksym) {
         case XKB_KEY_Escape:
-            power_button_event_sink->notify_on_press();
+            //power_button_event_sink->notify_on_press();
             //also pass on to clear input
 
         case XKB_KEY_u:
@@ -496,11 +502,11 @@ static void handle_key_press(xcb_key_press_event_t *event) {
             break;
 
         case XKB_KEY_XF86Sleep:
-            power_button_event_sink->notify_sleep_press();
+            //power_button_event_sink->notify_sleep_press();
             break;
 
         case XKB_KEY_XF86PowerDown:
-            power_button_event_sink->notify_off_press();
+            //power_button_event_sink->notify_off_press();
             break;
 
         case XKB_KEY_h:
@@ -575,15 +581,15 @@ static void handle_key_release(xcb_key_release_event_t *event) {
 
     switch (ksym) {
         case XKB_KEY_Escape:
-            power_button_event_sink->notify_on_release();
+            //power_button_event_sink->notify_on_release();
             break;
 
         case XKB_KEY_XF86Sleep:
-            power_button_event_sink->notify_sleep_release();
+            //power_button_event_sink->notify_sleep_release();
             break;
 
         case XKB_KEY_XF86PowerDown:
-            power_button_event_sink->notify_off_release();
+            //power_button_event_sink->notify_off_release();
             break;
 
         case XKB_KEY_XF86Send:
